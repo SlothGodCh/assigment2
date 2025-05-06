@@ -1,0 +1,5 @@
+[1,"==> quarto preview example.qmd --to html --no-watch-inputs --no-browse\n\n"]
+[1,"pandoc \n  to: html\n  output-file: example.html\n  standalone: true\n  section-divs: true\n  html-math-method: mathjax\n  wrap: none\n  default-image-extension: png\n  toc: true\n  toc-depth: 2\n  number-sections: true\n  css:\n    - styles.css\n  \nmetadata\n  document-css: false\n  link-citations: true\n  date-format: long\n  lang: en\n  title: Beginner's Guide to Git and GitHub\n  author: Jesus Biurrun\n  code-copy: true\n  theme: cosmo\n  \n"]
+[1,"Output created: example.html\n\nWatching files for changes\n"]
+[1,"Browse at http://localhost:7165/\n"]
+[1,"  /styles.css (404: Not Found)\n"]
