@@ -1,0 +1,103 @@
+    1  pwd
+    2  ch
+    3  cd
+    4  pwd
+    5  ls
+    6  cd Documents
+    7  ls
+    8  pwd
+    9  ls
+   10  cd documents
+   11  ls
+   12  cd "etc 5513"
+   13  cd documents
+   14  ls
+   15  cd 'etc 5513'
+   16  ls
+   17  git status
+   18  git clone https://github.com/SlothGodCh/Week4.git
+   19  git commit
+   20  git add
+   21  pwd
+   22  ls
+   23  cd week4
+   24  git commit
+   25  git add
+   26  git add .
+   27  git commit
+   28  git clone git@github.com:ETC5513-2025/etc5513-assignment-1-SlothGodCh.git
+   29  git status
+   30  git clone git@github.com:SlothGodCh/collab-demo.git
+   31  cd collab-demo
+   32  git status
+   33  git clone git@github.com:SlothGodCh/rcp.git
+   34  touch student-record/JesusBiurrun.md
+   35  cd rcp
+   36  touch student-record/JesusBiurrun.md
+   37  git status
+   38  git branch master
+   39  git add .
+   40  git commit -m"Created repository"
+   41  git push origin master
+   42  pwd
+   43  git clone git@github.com:mey63631/Tutorial6---quarto-rebase-demo.git
+   44  git clone git@github.com:SlothGodCh/Tutorial6---quarto-rebase-demo.git
+   45  git clone git@github.com:SlothGodCh/git-fix-workshop.git
+   46  echo "Important work" >> file.txt
+   47  git add file.txt && git commit -m "Oops"
+   48  git clone https://github.com/SlothGodCh/etc5513-tutorial8-JB.gi
+   49  pwd
+   50  ls
+   51  git ls
+   52  git status
+   53  git status https://github.com/SlothGodCh/etc5513-tutorial8-JB.git
+   54  git clone https://github.com/SlothGodCh/etc5513-tutorial8-JB.git
+   55  git status
+   56  git status
+   57  git cd
+   58  getpwd
+   59  git pwd
+   60  git statusx
+   61  git stats
+   62  git status
+   63  git add .
+   64  git commit -m "Added LF"
+   65  git push
+   66  git log
+   67  git log --online
+   68  git log --oneline
+   69  git reset --hard HEAD~1
+   70  git log --oneline
+   71  git lfs install
+   72  git status
+   73  git lfs track "*.zip"
+   74  git status
+   75  cat .gitattributes
+   76  git status
+   77  git add .
+   78  git commit -m "Adding large file"
+   79  git push origin main
+   80  git tag
+   81  git tag -a v1.0
+   82  git tag -a v1.0
+   83  git tag
+   84  git push origin v1.0
+   85  git status
+   86  git add .
+   87  git commit -m"Fixed issue #1"
+   88  git clone git@github.com:SlothGodCh/git-bisect-demo.git
+   89  git bisect
+   90  git bisect start
+   91  git bisect bad
+   92  git bisect bad
+   93  git bisect start
+   94  ~.bash_history
+   95  .bash_history
+   96  cd~
+   97  cd ~
+   98  ls
+   99  .bash_history
+  100  history
+  101  .bash_history
+  102  .bash_history
+  103  history > git_history.txt
