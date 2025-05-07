@@ -32,9 +32,101 @@ In order to initialize git when working in unconncected we have to use git init 
 As shown in the picture we uae git add commit and push to stage and push all files that we have on the file we have now because I was trying to push onto the class repository instead of a repository I had access to I had a bit of a problem as shown: 
 
 ![Image](images/Fig5.png)
-Now since I have no ownership of the repository no matter how much I tried to cheat Git neither I nor you will succed but you will still get a laugh out of me running around like a headless chicken
+Now since I have no ownership of the repository no matter how much I tried to cheat Git neither I nor you will succed but you will still get a laugh out of me running around like a headless chicken(git_history.txt). To fix all of the "Fixing" which included but was not limited to modifying my SSH I created a new Repository in GitHub got the new SSH key and did:
+
+
+When I first attempted to push my local repository to GitHub using the command:
+
+git push --set-upstream origin main
+I encountered the following error:
+
+no such identity: /c/Users/jesus/.ssh/id_ed25519: No such file or directory
+git@ssh.github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+This indicated that Git couldn't find my SSH key at the expected location and consequently couldn't authenticate with GitHub. 
+
+To resolve this, I had to remove the existing remote configuration:
+
+git remote remove origin
+I did this because the current remote configuration might have been incorrect or pointing to the wrong repository.
+
+Configured SSH settings:
+
+nano ~/.ssh/config
+I edited my SSH configuration file to remove the modified SSH id from a public one (id_ed25519) to my own specific SSH id_rsa in the config file we had:
+
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa (modification already done)
+
+Tested the SSH connection to GitHub:
+
+ssh -T git@github.com
+The successful response:
+
+Hi SlothGodCh! You've successfully authenticated, but GitHub does not provide shell access.
+confirmed that my SSH configuration was now working correctly.
+
+Attempted to push again, but encountered a new issue:
+
+git push --set-upstream origin main
+fatal: 'origin' does not appear to be a git repository
+This occurred because I had removed the remote origin in step 1, so Git no longer knew where to push my code.
+
+Added the correct remote repository:
+
+git remote add origin git@github.com:SlothGodCh/assigment2.git
+This command re-established the connection to my GitHub repository using the SSH protocol.
+
+Successfully pushed my code:
+
+git push -u origin main
+The output showed all my files being compressed and uploaded, concluding with:
+
+* [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+This confirmed that my local 'main' branch was now successfully connected to the remote repository.
+
+Verified the successful push:
+
+git status
+showed:
+
+On branch main
+Your branch is up to date with 'origin/main'.
+nothing to commit, working tree clean
+And:
+
+git branch
+displayed:
+
+* main
+  testbranch
+confirming that my main branch was synchronized with GitHub and I had one additional local branch (testbranch).
+
+Through this process, I resolved the authentication issue caused by myself if this was not the case the steps to follow would b:
+
+git init
+git add .
+git commit -m "Initial commit: added example.qmd and knitted HTML file"
+
+git remote add origin <github-repo-url>
+git branch -M main
+git push -u origin main
+
+This sets up Git version control locally and connects it to your GitHub repo for collaboration and backup.
+
+
 
 2.  Create a new branch called `testbranch`. Modify the file `example.qmd` and add the changes to both the local and remote repositories.
+
+To do this step I eliminated the previously created testbranch and restarted the process
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Assigment2 (main)
+$ git branch -D testbranch
+Deleted branch testbranch (was 56e63ab).
+
 
 3.  Create a folder called data, and add the data from Assignment 1 to that folder. Amend the previous commit to include the data folder. Push this amended commit to the remote.
 
