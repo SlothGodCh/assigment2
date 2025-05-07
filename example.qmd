@@ -25,6 +25,15 @@ Here is an example image:
 
 1.  From the command line interface, initialise this folder as a git repository and push it to the GitHub classroom repository.
 
+In order to initialize git when working in unconncected we have to use git init to initialize git
+
+![Image](images/Fig4.png)
+
+As shown in the picture we uae git add commit and push to stage and push all files that we have on the file we have now because I was trying to push onto the class repository instead of a repository I had access to I had a bit of a problem as shown: 
+
+![Image](images/Fig5.png)
+Now since I have no ownership of the repository no matter how much I tried to cheat Git neither I nor you will succed but you will still get a laugh out of me running around like a headless chicken
+
 2.  Create a new branch called `testbranch`. Modify the file `example.qmd` and add the changes to both the local and remote repositories.
 
 3.  Create a folder called data, and add the data from Assignment 1 to that folder. Amend the previous commit to include the data folder. Push this amended commit to the remote.
