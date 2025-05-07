@@ -142,4 +142,4 @@ Deleted branch testbranch (was 56e63ab).
 
 9.  On main, create a new section in `example.qmd` that includes an easy to make plot. Commit the changes, and demonstrate using the command line interface how to undo the commit *without* losing your local changes.
 
-We are modifying to cause error
+this will be different
