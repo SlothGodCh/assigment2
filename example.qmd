@@ -141,3 +141,5 @@ Deleted branch testbranch (was 56e63ab).
 8.  Show the commit log in condensed form in the terminal.
 
 9.  On main, create a new section in `example.qmd` that includes an easy to make plot. Commit the changes, and demonstrate using the command line interface how to undo the commit *without* losing your local changes.
+
+We are modifying to cause error
