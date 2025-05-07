@@ -119,18 +119,210 @@ This sets up Git version control locally and connects it to your GitHub repo for
 
 
 
-2.  Create a new branch called `testbranch`. Modify the file `example.qmd` and add the changes to both the local and remote repositories.
+##2.  Create a new branch called `testbranch`. Modify the file `example.qmd` and add the changes to both the local and remote repositories.
 
-To do this step I eliminated the previously created testbranch and restarted the process
+To do this step I eliminated the previously created (if you followed the part 1 you cans skip this section) testbranch and restarted the process
 
-jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Assigment2 (main)
-$ git branch -D testbranch
+##Deleting a Local Git Branch
+To permanently delete the local testbranch, I used the force deletion command:
+
+git branch -D testbranch
+This successfully removed the branch with the confirmation:
+
 Deleted branch testbranch (was 56e63ab).
+Key Notes:
+
+The -D flag forces deletion (equivalent to --delete --force)
+
+This only affects the local repository - the remote branch remains unchanged
+
+The hash 56e63ab shows the last commit on the deleted branch
+
+Always ensure you've merged or saved needed changes before deletion
+
+Warning: This action cannot be undone - all commits exclusive to this branch will be permanently lost unless they exist in another branch or were pushed to a remote.
+
+##Git Branching Workflow Demonstration
+Objective: Create a new branch called testbranch, modify files, and synchronize changes between local and remote repositories.
+
+Step 1: Creating a New Branch
+I began by creating and switching to a new branch called testbranch:
+
+git checkout -b testbranch
+The terminal responded:
+
+Switched to a new branch 'testbranch'
+This command simultaneously created the new branch and switched my working directory to it.
+
+Step 2: Making and Staging Changes
+I modified the example.qmd file and staged it for commit:
+
+git add example.qmd
+This prepared my changes to be permanently recorded in the version history.
+
+Step 3: Committing Changes
+I then committed the staged changes with a descriptive message:
+
+git commit -m "Update example.qmd in testbranch"
+The output showed:
+
+[testbranch aca824d] Update example.qmd in testbranch
+ 1 file changed, 93 insertions(+), 1 deletion(-)
+This created a permanent snapshot of my changes in the local repository's history.
+
+Step 4: Pushing to Remote Repository
+To synchronize with GitHub, I pushed the new branch:
+
+git push -u origin testbranch
+The detailed output showed the upload progress and concluded with:
+
+* [new branch]      testbranch -> testbranch
+branch 'testbranch' set up to track 'origin/testbranch'
+This accomplished three things:
+
+Created testbranch on the remote repository
+
+Uploaded my committed changes
+
+Established tracking between local and remote branches
+
+Step 5: Checking Status and Adding More Changes
+When I checked the status:
+
+git status
+It showed:
+
+A modified RStudio project file
+
+A new untracked image file (Fig6.png)
+
+I staged all changes using:
+
+git add .
+The warning about line endings is normal when working across different operating systems.
+
+Step 6: Final Commit and Push
+I committed these additional changes:
+
+git commit -m "Commit before pushing branch"
+And pushed again to update the remote branch:
+
+git push -u origin testbranch
+The output confirmed successful synchronization of my latest changes.
+
+Step 7: Switching Back to Main Branch
+Finally, I returned to the main branch:
+
+git switch main
+The message:
+
+Your branch is ahead of 'origin/main' by 1 commit.
+Indicates I have local commits not yet pushed to the remote main branch.
+
+Conclusion: Through this process, I successfully:
+
+Created and worked in an isolated branch
+
+Made and tracked changes to multiple files
+
+Synchronized my work with the remote repository
+
+Maintained proper version control practices
+
+This workflow demonstrates the standard Git process for implementing new features without disrupting the main codebase.
 
 
 3.  Create a folder called data, and add the data from Assignment 1 to that folder. Amend the previous commit to include the data folder. Push this amended commit to the remote.
 
-4.  Switch back to the main branch and modify `example.qmd` in a different way such that it will conflict with `testbranch`. Commit and push these changes.
+Adding Data Folder and Amending Commit
+Create data folder and add files
+
+bash
+mkdir data
+# Copy your Assignment 1 data files into the data/ folder
+ls data/  # Verify files are present
+Stage the new files
+
+bash
+git add data/
+Amend the previous commit
+
+bash
+git commit --amend --no-edit
+--amend: Adds these changes to the last commit
+
+--no-edit: Keeps the same commit message
+
+Force push to update remote
+
+bash
+git push --force
+Required because we rewrote commit history
+
+Only safe for personal branches (like testbranch)
+
+Important Notes:
+
+This replaces the previous commit entirely
+
+Never force-push to shared branches (main, dev, etc.)
+
+If collaborating, inform teammates after force-pushing
+
+The amended commit will now include both your original changes and the new data folder.
+
+##4.  Switch back to the main branch and modify `example.qmd` in a different way such that it will conflict with `testbranch`. Commit and push these changes.
+
+Creating and Resolving Merge Conflicts
+Objective: Create a merge conflict between main and testbranch, then resolve it properly.
+
+1. Switch to Main Branch
+git switch main
+Switches from testbranch back to the main development branch.
+
+2. Create Conflicting Changes
+bash
+Modified the same section changed in testbranch with different content:
+About this Project
+This text is DIFFERENT on main!
+
+3. Commit and Push Main Changes
+
+git add .
+git commit -m "Conflicting edit on main branch"
+git push
+
+Records and shares the conflicting changes with the remote repository.
+
+4. Attempt Merge
+bash
+git merge testbranch
+
+Output shows conflict detection:
+
+Auto-merging example.qmd
+CONFLICT (content): Merge conflict in example.qmd
+Automatic merge failed; fix conflicts and then commit the result.
+
+5. Resolve Conflict Manually
+Opened example.qmd to see conflict markers:
+
+markdown
+<<<<<<< HEAD
+This text is DIFFERENT on main!
+=======
+This text was added on testbranch.
+>>>>>>> testbranch
+Edited to combine both changes:
+
+This text combines changes from both branches.
+
+6. Complete the Merge
+bash
+git add example.qmd
+git commit -m "Resolve merge conflict between main and testbranch"
+git push
+Finalizes the conflict resolution and updates the remote repository.
 
 5.  Merge the changes in `testbranch` onto `main`. Show the conflict and fixing the merge conflict. Push the changes to GitHub, showing the status and changes in GitHub.
 
@@ -141,5 +333,3 @@ Deleted branch testbranch (was 56e63ab).
 8.  Show the commit log in condensed form in the terminal.
 
 9.  On main, create a new section in `example.qmd` that includes an easy to make plot. Commit the changes, and demonstrate using the command line interface how to undo the commit *without* losing your local changes.
-
-We are modifying to cause error
