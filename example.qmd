@@ -353,5 +353,60 @@ This provides a visual and concise overview of commits and branches.
 ![Image](images/Fig13.png)
 ![Image](images/Fig14.png)
 
-9.  On main, create a new section in `example.qmd` that includes an easy to make plot. Commit the changes, and demonstrate using the command line interface how to undo the commit *without* losing your local changes.
->>>>>>> testbranch
+9.  Undo a Commit (Without Losing Changes)
+
+## Simple Semicircle Plot
+
+
+```{r}
+# Set up the plotting window
+x_limits <- c(0, 4)
+y_limits <- c(0.5, 3.5)
+x <- seq(1, 3, length.out = 100)
+
+# Define semicircle parts (centered at x=2, y=2, radius=1)
+upper_semicircle <- 2 + sqrt(1 - (x - 2)^2)
+lower_semicircle <- 2 - sqrt(1 - (x - 2)^2)
+
+# Start plot
+plot(x, upper_semicircle,
+     type = 'l',
+     xlim = x_limits,
+     ylim = y_limits,
+     asp = 1,
+     xlab = "", ylab = "",
+     main = "Anarchist Symbol")
+
+# Add custom axes with ticks at whole numbers
+axis(1, at = 0:4)  # X-axis ticks at 0,1,2,3,4
+axis(2)  # Default y-axis
+
+# Add lower semicircle
+lines(x, lower_semicircle, col = "darkgreen")
+
+# Add lines forming the "A"
+abline(a = 1.7, b = 0.2, col = "red")     # red slanted line up
+abline(a = 9, b = -3, col = "darkred")    # red slanted line down
+abline(a = -3, b = 3, col = "blue")       # cross line
+
+# Add grid for reference
+grid()
+```
+
+After adding a new section to example.qmd and committing it:
+
+git add . 
+git commit -m "Add new section 9"
+
+The user realizes they want to undo the commit but keep the changes. They run:
+
+git reset --soft HEAD~1
+
+--soft undoes the commit but preserves staged changes, allowing edits or re-commits.
+
+Alternatives:
+
+--mixed: Unstages changes but keeps them.
+
+--hard: Deletes changes — irreversible without backups.
+
