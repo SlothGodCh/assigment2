@@ -271,7 +271,7 @@ If collaborating, inform teammates after force-pushing
 
 The amended commit will now include both your original changes and the new data folder.
 
-##5. Create a Merge Conflict
+##5. Create a Merge Conflict and push fix
 
 
 Switch to Main Branch
@@ -319,13 +319,39 @@ git add example.qmd
 git commit -m "Resolve merge conflict between main and testbranch"
 git push
 
-##5.  Merge the changes in `testbranch` onto `main`. Show the conflict and fixing the merge conflict. Push the changes to GitHub, showing the status and changes in GitHub.
+##6. Tag the Merged Commit
 
-6.  Tag this commit v1.0 on `main` using an annotated tag.
+o create a version tag:
 
-7.  Delete branch `testbranch` locally and on the remote.
+git tag -a v1.0 -m "First stable version after merge"
+git push origin v1.0
 
-8.  Show the commit log in condensed form in the terminal.
+Tags mark release points. Annotated tags (-a) store metadata (author, date, message) and are preferred over lightweight tags.
+![Image](images/Fig8.png)
+
+##7.  Delete branch `testbranch` locally and on the remote.
+
+To clean up after merging:
+
+git branch -d testbranch         # Local deletion
+git push origin --delete testbranch  # Remote deletion
+
+We use -d to safely deletes the branch only if merged. Use -D to force-delete if necessary (e.g., unmerged changes).
+![Image](images/Fig10.png)
+![Image](images/Fig9.png)
+
+##8.  Show the commit log in condensed form in the terminal.
+
+To inspect commit history:
+
+git log --oneline --graph --decorate --all
+
+This provides a visual and concise overview of commits and branches.
+
+![Image](images/Fig11.png)
+![Image](images/Fig12.png)
+![Image](images/Fig13.png)
+![Image](images/Fig14.png)
 
 9.  On main, create a new section in `example.qmd` that includes an easy to make plot. Commit the changes, and demonstrate using the command line interface how to undo the commit *without* losing your local changes.
 >>>>>>> testbranch

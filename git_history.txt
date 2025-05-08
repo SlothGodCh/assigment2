@@ -1,103 +1,158 @@
-    1  pwd
-    2  ch
-    3  cd
-    4  pwd
-    5  ls
-    6  cd Documents
-    7  ls
-    8  pwd
-    9  ls
-   10  cd documents
-   11  ls
-   12  cd "etc 5513"
-   13  cd documents
-   14  ls
-   15  cd 'etc 5513'
-   16  ls
-   17  git status
-   18  git clone https://github.com/SlothGodCh/Week4.git
-   19  git commit
-   20  git add
-   21  pwd
-   22  ls
-   23  cd week4
-   24  git commit
-   25  git add
-   26  git add .
-   27  git commit
-   28  git clone git@github.com:ETC5513-2025/etc5513-assignment-1-SlothGodCh.git
-   29  git status
-   30  git clone git@github.com:SlothGodCh/collab-demo.git
-   31  cd collab-demo
-   32  git status
-   33  git clone git@github.com:SlothGodCh/rcp.git
-   34  touch student-record/JesusBiurrun.md
-   35  cd rcp
-   36  touch student-record/JesusBiurrun.md
-   37  git status
-   38  git branch master
-   39  git add .
-   40  git commit -m"Created repository"
-   41  git push origin master
-   42  pwd
-   43  git clone git@github.com:mey63631/Tutorial6---quarto-rebase-demo.git
-   44  git clone git@github.com:SlothGodCh/Tutorial6---quarto-rebase-demo.git
-   45  git clone git@github.com:SlothGodCh/git-fix-workshop.git
-   46  echo "Important work" >> file.txt
-   47  git add file.txt && git commit -m "Oops"
-   48  git clone https://github.com/SlothGodCh/etc5513-tutorial8-JB.gi
-   49  pwd
-   50  ls
-   51  git ls
-   52  git status
-   53  git status https://github.com/SlothGodCh/etc5513-tutorial8-JB.git
-   54  git clone https://github.com/SlothGodCh/etc5513-tutorial8-JB.git
-   55  git status
-   56  git status
-   57  git cd
-   58  getpwd
-   59  git pwd
-   60  git statusx
-   61  git stats
-   62  git status
-   63  git add .
-   64  git commit -m "Added LF"
-   65  git push
-   66  git log
-   67  git log --online
-   68  git log --oneline
-   69  git reset --hard HEAD~1
-   70  git log --oneline
-   71  git lfs install
-   72  git status
-   73  git lfs track "*.zip"
-   74  git status
-   75  cat .gitattributes
-   76  git status
-   77  git add .
-   78  git commit -m "Adding large file"
-   79  git push origin main
-   80  git tag
-   81  git tag -a v1.0
-   82  git tag -a v1.0
-   83  git tag
-   84  git push origin v1.0
-   85  git status
-   86  git add .
-   87  git commit -m"Fixed issue #1"
-   88  git clone git@github.com:SlothGodCh/git-bisect-demo.git
-   89  git bisect
-   90  git bisect start
-   91  git bisect bad
-   92  git bisect bad
-   93  git bisect start
-   94  ~.bash_history
-   95  .bash_history
-   96  cd~
-   97  cd ~
-   98  ls
-   99  .bash_history
-  100  history
-  101  .bash_history
-  102  .bash_history
-  103  history > git_history.txt
+   jesus@SlothGodHP MINGW64 ~/Document
+s/ETC 5513/Assigment2/Aasigment2 (t
+estbranch)
+$ get pwd
+bash: get: command not found
+
+jesus@SlothGodHP MINGW64 ~/Document
+s/ETC 5513/Assigment2/Aasigment2 (t
+estbranch)
+$ git pwd
+git: 'pwd' is not a git command. Se
+e 'git --help'.
+
+The most similar command is
+        add
+
+jesus@SlothGodHP MINGW64 ~/Document
+s/ETC 5513/Assigment2/Aasigment2 (t
+estbranch)
+$ pwd
+/c/Users/jesus/Documents/ETC 5513/A
+ssigment2/Aasigment2
+
+jesus@SlothGodHP MINGW64 ~/Document
+s/ETC 5513/Assigment2/Aasigment2 (t
+estbranch)
+$ git status
+On branch testbranch
+nothing to commit, working tree cle
+an
+
+jesus@SlothGodHP MINGW64 ~/Document
+s/ETC 5513/Assigment2/Aasigment2 (t
+estbranch)
+$ git push --set-upstream origin$ push push --set-upstream origi$ git push --set-upstream origin te
+stbranch
+The authenticity of host '[ssh.gith
+ub.com]:443 ([4.237.22.40]:443)' ca
+n't be established.
+ED25519 key fingerprint is SHA256:+
+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr
+4UvCOqU.
+This host key is known by the follo
+wing other names/addresses:
+    ~/.ssh/known_hosts:1: github.co
+m
+Are you sure you want to continue c
+onnecting (yes/no/[fingerprint])onnecting (yes/no/[fingerprint])? y
+es
+Warning: Permanently added '[ssh.gi
+thub.com]:443' (ED25519) to the lis
+t of known hosts.
+ERROR: Permission to numbats/rcp.gi
+t denied to SlothGodCh.
+fatal: Could not read from remote r
+epository.
+
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigmejesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigmejesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigmejesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigment2 (t
+estbranch)
+$ it switch main
+bash: it: command not found
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigment2 (t
+estbranch)
+$ git switch main
+fatal: invalid reference: main
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigment2 (t
+estbranch)
+$ git switch master
+Switched to branch 'master'
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigment2 (m
+aster)
+$ git push
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin master
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigment2 (m
+aster)
+$ git push --set-upstream origin testbranch
+ERROR: Permission to numbats/rcp.git denied to SlothGodCh.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigment2 (m
+aster)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed
+        images/Fig5.png
+
+nothing added to commit but untracked files present (use "git add" to
+track)
+
+jesus@SlothGodHP MINGW64 ~/Documnothing added to commit but untracked files present (use "git add" to track)
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigment2 (master)
+$ ^C
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigment2 (master)
+$ git push --set-upstream origin master
+ERROR: Permission to numbats/rcp.git denied to SlothGodCh.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigment2 (master)
+$ git remote set-url origin git@github.com:SlothGodCh/rcp.git
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigment2 (master)
+$ git remote -v
+origin  git@github.com:SlothGodCh/rcp.git (fetch)
+origin  git@github.com:SlothGodCh/rcp.git (push)
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigment2 (master)
+$ git push --set-upstream origin master
+ssh: connect to host github.com
+port 22: Connection timed out
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigment2 (master)
+$ ^C
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigment2 (master)
+$ nano ~/.ssh/config
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigment2 (master)
+$ ssh -T git@github.com
+no such identity: /c/Users/jesus/.ssh/id_ed25519: No such file or directory
+git@ssh.github.com: Permission denied (publickey).
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigment2 (master)
+$
+
+jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Aasigment2 (master)
+$ ls ~/.ssh
+config      known_hosts
+id_rsa      known_hosts.old
+id_rsa.pub
