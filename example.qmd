@@ -6,204 +6,263 @@ format:
     toc: true
     toc-depth: 2
     number-sections: true
-    code-fold: true
-    code-tools: true
-    code-copy: true
     theme: cosmo
     css: styles.css
     highlight-style: pygments
 ---
+# Introduction
 
-This guide walks a new user through using Git and GitHub in the context of an RStudio project. Each step explains what is being done, why it's necessary, and why certain commands are preferred.
+This guide offers a beginner-friendly overview of Git and GitHub, essential tools for version control and collaboration in data science and software development. It focuses on core concepts, commands, and workflows—especially using RStudio.
 
-##1. Initialize New RStudio Project and Push to GitHub
-A user starts by creating a new RStudio project and adding a simple Quarto (example.qmd) file that can be knitted to HTML. The resulting knitted file should be saved and previewed to confirm that the file is working.
+## Understanding Git and GitHub
 
-### Image Example
+### What is Git?
+Git is a distributed version control system used to track changes in files and coordinate work across teams. It is especially valuable in software and data science projects where collaboration and version tracking are essential. Git allows you to:
 
-Here is the document knitted as an html:
+✅ Track changes to code, data, or documentation over time
+
+🔙 Revert to previous versions if something breaks
+
+🌿 Create branches to work on features or experiments independently
+
+👥 Collaborate with others without overwriting each other’s work
+
+Each Git repository contains a full history of changes, allowing users to explore, compare, or restore past versions of a project at any time.
+
+### What is GitHub?
+GitHub is a cloud-based platform that hosts Git repositories online. It makes it easier to collaborate, share, and manage your code with others. GitHub builds on Git by providing:
+
+☁️ Remote storage for Git repositories, making them accessible from anywhere
+
+🔁 Pull requests, which allow contributors to suggest changes and collaborate through code review
+
+🐛 Issue tracking to manage bugs, feature requests, and tasks
+
+📜 Visual tools to browse commit history, diffs, branches, and contributions
+
+GitHub also integrates with tools like RStudio, making it ideal for data science workflows.
+
+### Local vs Remote Repositories
+In a Git project, you typically work with two types of repositories:
+
+**Local repository:**
+
+Stored on your own computer
+
+Where you write code, commit changes, and test new features
+
+Offers full version history without needing an internet connection
+
+**Remote repository:**
+
+Hosted online, usually on platforms like GitHub, GitLab, or Bitbucket.
+
+Used for collaboration, backup, and sharing your project
+
+Requires git push to upload local changes and git pull to download updates from others
+
+Working with both local and remote repositories allows for flexible development, secure backups, and seamless teamwork.
+
+### Setting Up Git in RStudio
+
+Open RStudio and go to Tools > Global Options > Git/SVN.
+
+Ensure Git is installed and RStudio can detect it.
+
+Create a new project with version control: File > New Project > Version Control > Git.
+
+Clone from GitHub or initialize a new repository.
+
+### Git Basics and Core Commands
+
+**.gitignore**
+
+The .gitignore file tells Git which files or directories to ignore. Common entries include:
+
+.Rhistory
+.RData
+.DS_Store
+*.log
+*.tmp
+
+**Key Git Commands**
+
+| Git Command                           | Meaning                                         | Why It’s Useful                                 |
+|--------------------------------------|-------------------------------------------------|-------------------------------------------------|
+| `git init`                           | Start tracking the project with Git             | Begin version control                           |
+| `git status`                         | Check the status of changes                     | See staged, unstaged, or untracked files        |
+| `git add filename`                   | Stage a specific file                           | Prepare a file for committing                   |
+| `git add .`                          | Stage all changes in the working directory      | Quickly add everything for commit               |
+| `git commit -m "message"`            | Save a snapshot of changes                      | Record work into Git history                    |
+| `git log`                            | Show commit history                             | View detailed list of commits                   |
+| `git log --oneline`                  | Condensed commit history                        | View a brief summary of commits                 |
+| `git branch`                         | List all branches                               | Manage and view project branches                |
+| `git branch branch_name`            | Create a new branch                             | Work separately without affecting the main      |
+| `git switch branch_name`            | Switch to another branch                        | Move between versions                           |
+| `git switch -c branch_name`         | Create and switch to a new branch               | Shortcut to save time                           |
+| `git merge branch_name`             | Merge another branch into current               | Combine features safely                         |
+| `git push`                           | Upload commits to GitHub                        | Share work online                               |
+| `git push -u origin main`           | Push and track a new branch                     | Set up branch tracking                          |
+| `git pull`                           | Download and merge remote changes               | Stay updated with remote                        |
+| `git tag -a v1.0 -m "message"`       | Create an annotated tag                         | Mark important project points                   |
+| `git reset --soft HEAD~1`           | Undo last commit but keep changes staged        | Correct mistakes without losing work            |
+| `git remote add origin url`         | Connect local repo to GitHub                    | Set up a remote repository                      |
+| `git remote -v`                      | View remote connections                         | Confirm remote links                            |
+| `git remote remove origin`          | Remove a GitHub link                            | Disconnect remote repository                    |
+| `git branch -d branch_name`         | Delete a local branch                           | Clean up after merging                          |
+| `git stash`                          | Temporarily save uncommitted work               | Save work without committing                    |
+| `git stash pop`                      | Reapply stashed work                            | Restore work and continue                       |
+| `git revert commit_id`              | Undo a specific commit safely                   | Safe undo for public history                    |
+| `git rebase branch_name`            | Move branch commits onto another branch         | Simplify commit history                         |
+| `git rebase -i HEAD~n`              | Interactive rebase to squash commits            | Combine multiple commits into one               |
+
+
+### Git Workflow Example (RStudio)
+
+Step-by-Step:
+
+Create a new RStudio Project using Git.
+
+Make changes to a file (e.g., analysis.R).
+
+Use the Git tab in RStudio or run in terminal:
+
+git status
+git add analysis.R
+git commit -m "Initial analysis script"
+git push
+
+Modify file again and repeat add, commit, and push.
+
+Branching
+
+git branch new-feature: Create a new branch
+
+git checkout new-feature: Switch to the branch
+
+git merge new-feature: Merge into main branch
+
+### GitHub-Specific Features
+
+**Forking**
+
+Fork a repository to your GitHub account to work on a copy independently.
+
+**Pull Requests**
+
+Used to propose changes from a fork or branch into the main repository. Allows for code review and discussion.
+
+**GitHub Issues**
+
+Used to track bugs, enhancements, and tasks.
+
+**README.md and LICENSE**
+
+README.md: Overview of the project, setup instructions
+
+LICENSE: Declares the terms under which others can use the code
+
+
+
+### Best Practices
+
+Write clear, descriptive commit messages (e.g., "Add user authentication logic")
+
+Add constantly, Commit frequently, and push rarely
+
+Use .gitignore to prevent clutter
+
+Never force push unless absolutely necessary
+
+Use branches for new features or fixes
+
+Document your repository with a README and meaningful comments
+
+
+# Assignment 2
+
+## Initialize New RStudio Project
+
+Start by creating a new RStudio project, then add a simple Quarto file (e.g., example.qmd). Knit the file to HTML to ensure everything works correctly. You should see the output rendered in the Viewer pane or in your browser. Something like:
 
 ![Image](images/Fig1.png)
 <!-- -->
 
-###2.Initialize Git
-To start using Git in this folder, the user opens a terminal or command line interface and runs:
+## Initialize Git
 
-In order to initialize git when working in an unconnected we have to use git init to initialize git
+To start tracking your project with Git in a local (unconnected) environment, use git init in the terminal to initialize a new Git repository.
 
 ![Image](images/Fig4.png)
 
-This command initializes a new Git repository locally. It's essential to track changes, create commits, and eventually sync the project with GitHub.
+This command initializes a new Git repository locally. It’s the first step in tracking changes, making commits, and later syncing your project with GitHub.
 
-##3.Stage, Commit, and Push to GitHub
+## Stage and Push to GitHub
 
-As shown in the picture we use git add commit and push to stage and push all files that we have on the local repository.
+As shown in the image, we use git add, git commit, and git push to stage and upload our local changes to the remote repository.
 
-git add .: Adds all new/modified files. We use . to include everything or we select files manually (git add example.qmd).
+git add . — Stages all new and modified files. You can also stage specific files (e.g., git add example.qmd).
 
-git commit -m: Stages the changes with a short message.
+git commit -m "message" — Records the staged changes with a short, descriptive message.
+
 ![Image](images/Fig3.png)
 To connect to GitHub, the user adds a remote:
 
 git remote add origin <github-repo-url>
 git branch -M main
-And then we push all commited changes. This will update our remote repository in Git:
+
+This will connect us to the remote repository and rename the master branch to main, this last part is not necesary but is easier to keep track this way.
+
+And then we push all committed changes. This will update our remote repository in Git:
 
 git push -u origin main
 -u establishes an upstream link, so future git push commands don’t need to specify the branch.
 
-##Story Time (Skip to next step to continue with the guide)
 
-Because I was trying to push onto the class repository instead of a repository I had access to I had a bit of a problem as shown: 
-
-![Image](images/Fig5.png)
-Now since I have no ownership of the repository no matter how much I tried to cheat Git neither I nor you will succed but you will still get a laugh out of me running around like a headless chicken(git_history.txt). To fix all of the "Fixing" which included but was not limited to modifying my SSH I created a new Repository in GitHub got the new SSH key and did:
-
-
-When I first attempted to push my local repository to GitHub using the command:
-
-git push --set-upstream origin main
-I encountered the following error:
-
-no such identity: /c/Users/jesus/.ssh/id_ed25519: No such file or directory
-git@ssh.github.com: Permission denied (publickey).
-fatal: Could not read from remote repository.
-This indicated that Git couldn't find my SSH key at the expected location and consequently couldn't authenticate with GitHub. 
-
-To resolve this, I had to remove the existing remote configuration:
-
-git remote remove origin
-I did this because the current remote configuration might have been incorrect or pointing to the wrong repository.
-
-###Configured SSH settings:
-
-SSH Issues
-If Git cannot authenticate with GitHub due to SSH issues (e.g., Permission denied (publickey)), We had to:
-
-1. Check SSH key setup:
-
-nano ~/.ssh/config
-
-2. Update the SSH config file change public key to id_rsa:
-
-Host github.com
-  HostName github.com
-  User git
-  IdentityFile ~/.ssh/id_rsa
-  
-4.Test connection:
-
-ssh -T git@github.com
-Hi SlothGodCh! You've successfully authenticated, but GitHub does not provide shell access.
-
-5. Since the previous remote was incorrect:
-
-When attempted to push again, encountered a new issue:
-
-git push --set-upstream origin main
-fatal: 'origin' does not appear to be a git repository
-This occurred because I had removed the remote origin in step 1, so Git no longer knew where to push my code.
-
-Added the correct remote repository:
-
-git remote add origin git@github.com:SlothGodCh/assigment2.git
-This command re-established the connection to my GitHub repository using the SSH protocol.
-
-6. Successfully pushed my code:
-
-git push -u origin main
-The output showed all my files being compressed and uploaded, concluding with:
-
-* [new branch]      main -> main
-branch 'main' set up to track 'origin/main'.
-This confirmed that my local 'main' branch was now successfully connected to the remote repository.
-
-7. Verified the successful push:
-
-git status
-showed:
-
-On branch main
-Your branch is up to date with 'origin/main'.
-nothing to commit, working tree clean
-And:
-
-git branch
-displayed:
-
-* main
-  testbranch
-confirming that my main branch was synchronized with GitHub and I had one additional local branch (testbranch).
-
-So instead of doing the easyway:
-git init
-git add .
-git commit -m "Initial commit: added example.qmd and knitted HTML file"
-
-git remote add origin <github-repo-url>
-git branch -M main
-git push -u origin main
-
-This would set up Git version control locally and connect it to a GitHub repo for collaboration and backup without panicking and having all the troubles I had.
-
-
-
-##2. Create and Push a New Branch
-
-To do this step I eliminated the previously created (if you followed the part 1 you cans skip this section) testbranch and restarted the process
-
-###Deleting a Local Git Branch
-To permanently delete the local testbranch, I used the force deletion command:
-
-git branch -D testbranch
-This successfully removed the branch with the confirmation:
-
-Deleted branch testbranch (was 56e63ab).
-Key Notes:
-
-The -D flag forces deletion (equivalent to --delete --force)
-
-This only affects the local repository - the remote branch remains unchanged
-
-The hash 56e63ab shows the last commit on the deleted branch
-
-Always ensure you've merged or saved needed changes before deletion, especially since this action cannot be undone - all commits exclusive to this branch will be permanently lost unless they exist in another branch or were pushed to a remote.
-
-###Git Branching Workflow Demonstration
+## Git Branching Workflow Demonstration
 
 Step 1: To safely develop new features without affecting the main codebase, the user creates a new branch:
+
 ![Image](images/Fig6.png)
+
+
 git checkout -b testbranch
+
 The terminal responded:
 
 Switched to a new branch 'testbranch'
-This creates and switches to testbranch in one command. It's preferred over git branch testbranch followed by git switch testbranch for simplicity.
+
+This command both creates and switches to the new branch in one go, making it simpler than using git branch testbranch followed by git switch testbranch.
 
 Step 2: Making and Staging Changes
+
 After editing example.qmd, the user stages and commits:
 
 git add example.qmd
-This prepared my changes to be permanently recorded in the version history.
+
+This prepared the changes to be recorded in the version history.
+
+Then, I committed the changes with:
 
 git commit -m "Update example.qmd in testbranch"
 
-Then pushes the branch:
+Next, I pushed the branch to GitHub:
 
 git push -u origin testbranch
 
-This syncs the branch with GitHub and sets up tracking.
+This command does two things: it syncs the branch with GitHub and sets up tracking between my local and remote branches.
 
-The detailed output showed the upload progress and concluded with:
+The output showed the progress and ended with:
 
 * [new branch]      testbranch -> testbranch
 branch 'testbranch' set up to track 'origin/testbranch'
-This accomplished three things:
 
-Created testbranch on the remote repository
+This meant:
 
-Uploaded my committed changes
+The testbranch was created on the remote repository.
 
-Established tracking between local and remote branches
+My committed changes were uploaded.
+
+Tracking was set up between the local and remote branches.
 
 Step 3: Checking Status and Adding More Changes
 
@@ -211,32 +270,37 @@ To check work or stage additional changes:
 
 git status
 
-You could check directly on the git window upperright corener instead of using the command.
-It showed:
+Alternatively, you can check the Git tab in the upper right corner of RStudio, which shows the same information visually.
+
+The output showed two things:
 
 A modified RStudio project file
 
 A new untracked image file (Fig6.png)
 
-I staged all changes using:
+To stage everything, I used::
 
 git add .
 git commit -m "Commit before pushing branch"
-And pushed again to update the remote branch:
+
+And pushed the updates to the remote branch:
 
 git push -u origin testbranch
-The output confirmed successful synchronization of my latest changes.
 
-Step 7: Switching Back to Main Branch
-Finally, I returned to the main branch:
+The output confirmed that all my latest changes were successfully synchronized with GitHub.
+
+Step 4: Switching Back to Main Branch
+
+Once I was done working on testbranch, I switched back to the main branch with:
 
 git switch main
+
 The message:
-
 Your branch is ahead of 'origin/main' by 1 commit.
-Indicates I have local commits not yet pushed to the remote main branch.
 
-##4.Add a data Folder and Amend the Previous Commit
+This means I have local changes on the main branch that haven’t been pushed to the remote repository yet.
+
+## Add a data Folder and Amend the Previous Commit
 
 The user adds a data folder with relevant files:
 mkdir data #Copy your Assignment 1 data files into the data folder
@@ -254,7 +318,7 @@ This keeps the commit history clean by updating the last commit without changing
 Because this rewrites history, a force-push is needed:
 
 
-Force push to update remote
+You must force push to update remote
 
 git push --force
 Required because we rewrote commit history
@@ -265,13 +329,13 @@ Important Notes:
 
 This replaces the previous commit entirely
 
-Never force-push to shared branches (main, dev, etc.)
+Never force push to shared branches (main, dev, etc.)
 
 If collaborating, inform teammates after force-pushing
 
 The amended commit will now include both your original changes and the new data folder.
 
-##5. Create a Merge Conflict and push fix
+## Create a Merge Conflict and Push Fix
 
 
 Switch to Main Branch
@@ -313,15 +377,15 @@ Automatic merge failed; fix conflicts and then commit the result.
 
 ![Image](images/Fig7.png)
 Resolve Conflict Manually
-The user manually edits the file to resolve the conflict, eliminating all <>HEADand testbranch section, then finishes the merge:
+The user manually edits the file to resolve the conflict, eliminating all <<<<<<< HEAD and =======/>>>>>>> testbranch sections then finishes the merge:
 
 git add example.qmd
 git commit -m "Resolve merge conflict between main and testbranch"
 git push
 
-##6. Tag the Merged Commit
+## Tag the Merged Commit
 
-o create a version tag:
+To create a version tag:
 
 git tag -a v1.0 -m "First stable version after merge"
 git push origin v1.0
@@ -329,18 +393,18 @@ git push origin v1.0
 Tags mark release points. Annotated tags (-a) store metadata (author, date, message) and are preferred over lightweight tags.
 ![Image](images/Fig8.png)
 
-##7.  Delete branch `testbranch` locally and on the remote.
+## Delete branch `testbranch` locally and on the remote.
 
 To clean up after merging:
 
 git branch -d testbranch         # Local deletion
 git push origin --delete testbranch  # Remote deletion
 
-We use -d to safely deletes the branch only if merged. Use -D to force-delete if necessary (e.g., unmerged changes).
+We use -d to safely delete the branch only if merged. Use -D to force-delete if necessary (e.g., unmerged changes).
 ![Image](images/Fig10.png)
 ![Image](images/Fig9.png)
 
-##8.  Show the commit log in condensed form in the terminal.
+## Display the commit log in a condensed format in the terminal.
 
 To inspect commit history:
 
@@ -353,12 +417,13 @@ This provides a visual and concise overview of commits and branches.
 ![Image](images/Fig13.png)
 ![Image](images/Fig14.png)
 
-9.  Undo a Commit (Without Losing Changes)
+## Undo a Commit (Without Losing Changes)
 
-## Simple Semicircle Plot
+Simple Semicircle Plot
 
 
-```{r}
+```{r, echo=FALSE}
+
 # Set up the plotting window
 x_limits <- c(0, 4)
 y_limits <- c(0.5, 3.5)
@@ -410,3 +475,128 @@ Alternatives:
 
 --hard: Deletes changes — irreversible without backups.
 
+### Story Time (Only included since I know how much you like to see how we overrcomplicate ourselves)
+
+Because I was trying to push onto the class repository instead of a repository I had access to I had a bit of a problem as shown: 
+
+![Image](images/Fig5.png)
+Since I don't have ownership of the repository, no matter how much I tried to cheat Git, neither of us will succeed. But you’ll still get a good laugh watching me run around like a headless chicken (see git_history.txt). To fix all the 'fixing'—which included, but wasn’t limited to, modifying my SSH—I created a new repository on GitHub, got the new SSH key, and did the following:
+
+
+When I first tried to push my local repository to GitHub with the command:
+
+git push --set-upstream origin main
+
+I ran into the following error:
+
+no such identity: /c/Users/jesus/.ssh/id_ed25519: No such file or directory git@ssh.github.com: Permission denied (publickey). fatal: Could not read from remote repository.
+
+This error meant that Git couldn't find my SSH key at the expected location, so it couldn’t authenticate with GitHub.
+
+To fix this, I removed the existing remote configuration:
+
+git remote remove origin
+
+I did this because the remote configuration might have been incorrect or pointed to the wrong repository.
+
+### Configured SSH settings:
+
+If Git can't authenticate with GitHub due to SSH issues (like "Permission denied (publickey)"), follow these steps:
+
+1. Check SSH key setup:
+Open the SSH config file with:
+
+nano ~/.ssh/config
+
+2. Update SSH config:
+Change the public key to id_rsa like this:
+
+Host github.com
+  
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa
+  
+3.Test connection:
+
+ssh -T git@github.com
+You should see:
+Hi SlothGodCh! You've successfully authenticated, but GitHub does not provide shell access.
+
+4. Fix the remote:
+Since the previous remote was incorrect, I ran into this issue when pushing:
+
+git push --set-upstream origin main
+fatal: 'origin' does not appear to be a git repository
+
+This happened because I had removed the remote origin earlier, so Git didn't know where to push my code.
+
+To fix this, I added the correct remote repository:
+
+git remote add origin git@github.com:SlothGodCh/assigment2.git
+
+This command re-established the connection to my GitHub repository using the SSH protocol.
+
+5. Push the code:
+After adding the correct remote, I pushed my code with:
+
+git push -u origin main
+
+The output showed all my files being uploaded and confirmed that the 'main' branch was set up correctly:
+
+* [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+6. Verify the successful push:
+To check everything was synced, I ran:
+
+git status
+
+It showed:
+
+On branch main
+Your branch is up to date with 'origin/main'.
+nothing to commit, working tree clean
+
+And:
+
+git branch
+
+Which displayed:
+
+* main
+  testbranch
+This confirmed that my local 'main' branch was properly connected to the remote repository.
+
+7. The Easy Way:
+Instead of going through all the issues, you could do it the easy way by running:
+
+git init
+git add .
+git commit -m "Initial commit: added example.qmd and knitted HTML file"
+git remote add origin <github-repo-url>
+git branch -M main
+git push -u origin main
+
+This setup would connect your local repository to GitHub without the hassle.
+
+### Create and Push a New Branch
+
+To do this step I eliminated the previously created (if you followed the part 1 you can skip this section) testbranch and restarted the process
+
+### Deleting a Local Git Branch
+To permanently delete the local testbranch, I used the force deletion command:
+
+git branch -D testbranch
+
+This successfully removed the branch with the confirmation:
+
+Deleted branch testbranch (was 56e63ab).
+
+The -D flag forces deletion (equivalent to --delete --force)
+
+This only affects the local repository - the remote branch remains unchanged
+
+The hash 56e63ab shows the last commit on the deleted branch
+
+Note:  Always ensure you've merged or saved needed changes before deletion, especially since this action cannot be undone - all commits exclusive to this branch will be permanently lost unless they exist in another branch or were pushed to a remote.

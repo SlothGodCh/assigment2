@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -81,7 +47,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#image-example" id="toc-image-example" class="nav-link active" data-scroll-target="#image-example"><span class="header-section-number">1</span> Image Example</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
+  <ul class="collapse">
+  <li><a href="#understanding-git-and-github" id="toc-understanding-git-and-github" class="nav-link" data-scroll-target="#understanding-git-and-github"><span class="header-section-number">1.1</span> Understanding Git and GitHub</a></li>
+  </ul></li>
+  <li><a href="#assignment-2" id="toc-assignment-2" class="nav-link" data-scroll-target="#assignment-2"><span class="header-section-number">2</span> Assignment 2</a>
+  <ul class="collapse">
+  <li><a href="#initialize-new-rstudio-project" id="toc-initialize-new-rstudio-project" class="nav-link" data-scroll-target="#initialize-new-rstudio-project"><span class="header-section-number">2.1</span> Initialize New RStudio Project</a></li>
+  <li><a href="#initialize-git" id="toc-initialize-git" class="nav-link" data-scroll-target="#initialize-git"><span class="header-section-number">2.2</span> Initialize Git</a></li>
+  <li><a href="#stage-and-push-to-github" id="toc-stage-and-push-to-github" class="nav-link" data-scroll-target="#stage-and-push-to-github"><span class="header-section-number">2.3</span> Stage and Push to GitHub</a></li>
+  <li><a href="#git-branching-workflow-demonstration" id="toc-git-branching-workflow-demonstration" class="nav-link" data-scroll-target="#git-branching-workflow-demonstration"><span class="header-section-number">2.4</span> Git Branching Workflow Demonstration</a></li>
+  <li><a href="#add-a-data-folder-and-amend-the-previous-commit" id="toc-add-a-data-folder-and-amend-the-previous-commit" class="nav-link" data-scroll-target="#add-a-data-folder-and-amend-the-previous-commit"><span class="header-section-number">2.5</span> Add a data Folder and Amend the Previous Commit</a></li>
+  <li><a href="#create-a-merge-conflict-and-push-fix" id="toc-create-a-merge-conflict-and-push-fix" class="nav-link" data-scroll-target="#create-a-merge-conflict-and-push-fix"><span class="header-section-number">2.6</span> Create a Merge Conflict and Push Fix</a></li>
+  <li><a href="#tag-the-merged-commit" id="toc-tag-the-merged-commit" class="nav-link" data-scroll-target="#tag-the-merged-commit"><span class="header-section-number">2.7</span> Tag the Merged Commit</a></li>
+  <li><a href="#delete-branch-testbranch-locally-and-on-the-remote." id="toc-delete-branch-testbranch-locally-and-on-the-remote." class="nav-link" data-scroll-target="#delete-branch-testbranch-locally-and-on-the-remote."><span class="header-section-number">2.8</span> Delete branch <code>testbranch</code> locally and on the remote.</a></li>
+  <li><a href="#display-the-commit-log-in-a-condensed-format-in-the-terminal." id="toc-display-the-commit-log-in-a-condensed-format-in-the-terminal." class="nav-link" data-scroll-target="#display-the-commit-log-in-a-condensed-format-in-the-terminal."><span class="header-section-number">2.9</span> Display the commit log in a condensed format in the terminal.</a></li>
+  <li><a href="#undo-a-commit-without-losing-changes" id="toc-undo-a-commit-without-losing-changes" class="nav-link" data-scroll-target="#undo-a-commit-without-losing-changes"><span class="header-section-number">2.10</span> Undo a Commit (Without Losing Changes)</a></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -89,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Beginner’s Guide to Git and GitHub</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<h1 class="title">Beginner’s Guide to Git and GitHub</h1>
 </div>
 
 
@@ -112,26 +94,465 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<ol type="1">
-<li>Create a new RStudio Project. In this folder, create a simple qmd file called <code>example.qmd</code> that can be knitted into a HTML file. Show the result of the knitted file.</li>
-</ol>
-<section id="image-example" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="image-example"><span class="header-section-number">1</span> Image Example</h2>
-<p>Here is an example image:</p>
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+<p>This guide offers a beginner-friendly overview of Git and GitHub, essential tools for version control and collaboration in data science and software development. It focuses on core concepts, commands, and workflows—especially using RStudio.</p>
+<section id="understanding-git-and-github" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="understanding-git-and-github"><span class="header-section-number">1.1</span> Understanding Git and GitHub</h2>
+<section id="what-is-git" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="what-is-git"><span class="header-section-number">1.1.1</span> What is Git?</h3>
+<p>Git is a distributed version control system used to track changes in files and coordinate work across teams. It is especially valuable in software and data science projects where collaboration and version tracking are essential. Git allows you to:</p>
+<p>✅ Track changes to code, data, or documentation over time</p>
+<p>🔙 Revert to previous versions if something breaks</p>
+<p>🌿 Create branches to work on features or experiments independently</p>
+<p>👥 Collaborate with others without overwriting each other’s work</p>
+<p>Each Git repository contains a full history of changes, allowing users to explore, compare, or restore past versions of a project at any time.</p>
+</section>
+<section id="what-is-github" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="what-is-github"><span class="header-section-number">1.1.2</span> What is GitHub?</h3>
+<p>GitHub is a cloud-based platform that hosts Git repositories online. It makes it easier to collaborate, share, and manage your code with others. GitHub builds on Git by providing:</p>
+<p>☁️ Remote storage for Git repositories, making them accessible from anywhere</p>
+<p>🔁 Pull requests, which allow contributors to suggest changes and collaborate through code review</p>
+<p>🐛 Issue tracking to manage bugs, feature requests, and tasks</p>
+<p>📜 Visual tools to browse commit history, diffs, branches, and contributions</p>
+<p>GitHub also integrates with tools like RStudio, making it ideal for data science workflows.</p>
+</section>
+<section id="local-vs-remote-repositories" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="local-vs-remote-repositories"><span class="header-section-number">1.1.3</span> Local vs Remote Repositories</h3>
+<p>In a Git project, you typically work with two types of repositories:</p>
+<p><strong>Local repository:</strong></p>
+<p>Stored on your own computer</p>
+<p>Where you write code, commit changes, and test new features</p>
+<p>Offers full version history without needing an internet connection</p>
+<p><strong>Remote repository:</strong></p>
+<p>Hosted online, usually on platforms like GitHub, GitLab, or Bitbucket.</p>
+<p>Used for collaboration, backup, and sharing your project</p>
+<p>Requires git push to upload local changes and git pull to download updates from others</p>
+<p>Working with both local and remote repositories allows for flexible development, secure backups, and seamless teamwork.</p>
+</section>
+<section id="setting-up-git-in-rstudio" class="level3" data-number="1.1.4">
+<h3 data-number="1.1.4" class="anchored" data-anchor-id="setting-up-git-in-rstudio"><span class="header-section-number">1.1.4</span> Setting Up Git in RStudio</h3>
+<p>Open RStudio and go to Tools &gt; Global Options &gt; Git/SVN.</p>
+<p>Ensure Git is installed and RStudio can detect it.</p>
+<p>Create a new project with version control: File &gt; New Project &gt; Version Control &gt; Git.</p>
+<p>Clone from GitHub or initialize a new repository.</p>
+</section>
+<section id="git-basics-and-core-commands" class="level3" data-number="1.1.5">
+<h3 data-number="1.1.5" class="anchored" data-anchor-id="git-basics-and-core-commands"><span class="header-section-number">1.1.5</span> Git Basics and Core Commands</h3>
+<p><strong>.gitignore</strong></p>
+<p>The .gitignore file tells Git which files or directories to ignore. Common entries include:</p>
+<p>.Rhistory .RData .DS_Store <em>.log </em>.tmp</p>
+<p><strong>Key Git Commands</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Git Command</th>
+<th>Meaning</th>
+<th>Why It’s Useful</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>git init</code></td>
+<td>Start tracking the project with Git</td>
+<td>Begin version control</td>
+</tr>
+<tr class="even">
+<td><code>git status</code></td>
+<td>Check the status of changes</td>
+<td>See staged, unstaged, or untracked files</td>
+</tr>
+<tr class="odd">
+<td><code>git add filename</code></td>
+<td>Stage a specific file</td>
+<td>Prepare a file for committing</td>
+</tr>
+<tr class="even">
+<td><code>git add .</code></td>
+<td>Stage all changes in the working directory</td>
+<td>Quickly add everything for commit</td>
+</tr>
+<tr class="odd">
+<td><code>git commit -m "message"</code></td>
+<td>Save a snapshot of changes</td>
+<td>Record work into Git history</td>
+</tr>
+<tr class="even">
+<td><code>git log</code></td>
+<td>Show commit history</td>
+<td>View detailed list of commits</td>
+</tr>
+<tr class="odd">
+<td><code>git log --oneline</code></td>
+<td>Condensed commit history</td>
+<td>View a brief summary of commits</td>
+</tr>
+<tr class="even">
+<td><code>git branch</code></td>
+<td>List all branches</td>
+<td>Manage and view project branches</td>
+</tr>
+<tr class="odd">
+<td><code>git branch branch_name</code></td>
+<td>Create a new branch</td>
+<td>Work separately without affecting the main</td>
+</tr>
+<tr class="even">
+<td><code>git switch branch_name</code></td>
+<td>Switch to another branch</td>
+<td>Move between versions</td>
+</tr>
+<tr class="odd">
+<td><code>git switch -c branch_name</code></td>
+<td>Create and switch to a new branch</td>
+<td>Shortcut to save time</td>
+</tr>
+<tr class="even">
+<td><code>git merge branch_name</code></td>
+<td>Merge another branch into current</td>
+<td>Combine features safely</td>
+</tr>
+<tr class="odd">
+<td><code>git push</code></td>
+<td>Upload commits to GitHub</td>
+<td>Share work online</td>
+</tr>
+<tr class="even">
+<td><code>git push -u origin main</code></td>
+<td>Push and track a new branch</td>
+<td>Set up branch tracking</td>
+</tr>
+<tr class="odd">
+<td><code>git pull</code></td>
+<td>Download and merge remote changes</td>
+<td>Stay updated with remote</td>
+</tr>
+<tr class="even">
+<td><code>git tag -a v1.0 -m "message"</code></td>
+<td>Create an annotated tag</td>
+<td>Mark important project points</td>
+</tr>
+<tr class="odd">
+<td><code>git reset --soft HEAD~1</code></td>
+<td>Undo last commit but keep changes staged</td>
+<td>Correct mistakes without losing work</td>
+</tr>
+<tr class="even">
+<td><code>git remote add origin url</code></td>
+<td>Connect local repo to GitHub</td>
+<td>Set up a remote repository</td>
+</tr>
+<tr class="odd">
+<td><code>git remote -v</code></td>
+<td>View remote connections</td>
+<td>Confirm remote links</td>
+</tr>
+<tr class="even">
+<td><code>git remote remove origin</code></td>
+<td>Remove a GitHub link</td>
+<td>Disconnect remote repository</td>
+</tr>
+<tr class="odd">
+<td><code>git branch -d branch_name</code></td>
+<td>Delete a local branch</td>
+<td>Clean up after merging</td>
+</tr>
+<tr class="even">
+<td><code>git stash</code></td>
+<td>Temporarily save uncommitted work</td>
+<td>Save work without committing</td>
+</tr>
+<tr class="odd">
+<td><code>git stash pop</code></td>
+<td>Reapply stashed work</td>
+<td>Restore work and continue</td>
+</tr>
+<tr class="even">
+<td><code>git revert commit_id</code></td>
+<td>Undo a specific commit safely</td>
+<td>Safe undo for public history</td>
+</tr>
+<tr class="odd">
+<td><code>git rebase branch_name</code></td>
+<td>Move branch commits onto another branch</td>
+<td>Simplify commit history</td>
+</tr>
+<tr class="even">
+<td><code>git rebase -i HEAD~n</code></td>
+<td>Interactive rebase to squash commits</td>
+<td>Combine multiple commits into one</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="git-workflow-example-rstudio" class="level3" data-number="1.1.6">
+<h3 data-number="1.1.6" class="anchored" data-anchor-id="git-workflow-example-rstudio"><span class="header-section-number">1.1.6</span> Git Workflow Example (RStudio)</h3>
+<p>Step-by-Step:</p>
+<p>Create a new RStudio Project using Git.</p>
+<p>Make changes to a file (e.g., analysis.R).</p>
+<p>Use the Git tab in RStudio or run in terminal:</p>
+<p>git status git add analysis.R git commit -m “Initial analysis script” git push</p>
+<p>Modify file again and repeat add, commit, and push.</p>
+<p>Branching</p>
+<p>git branch new-feature: Create a new branch</p>
+<p>git checkout new-feature: Switch to the branch</p>
+<p>git merge new-feature: Merge into main branch</p>
+</section>
+<section id="github-specific-features" class="level3" data-number="1.1.7">
+<h3 data-number="1.1.7" class="anchored" data-anchor-id="github-specific-features"><span class="header-section-number">1.1.7</span> GitHub-Specific Features</h3>
+<p><strong>Forking</strong></p>
+<p>Fork a repository to your GitHub account to work on a copy independently.</p>
+<p><strong>Pull Requests</strong></p>
+<p>Used to propose changes from a fork or branch into the main repository. Allows for code review and discussion.</p>
+<p><strong>GitHub Issues</strong></p>
+<p>Used to track bugs, enhancements, and tasks.</p>
+<p><strong>README.md and LICENSE</strong></p>
+<p>README.md: Overview of the project, setup instructions</p>
+<p>LICENSE: Declares the terms under which others can use the code</p>
+</section>
+<section id="best-practices" class="level3" data-number="1.1.8">
+<h3 data-number="1.1.8" class="anchored" data-anchor-id="best-practices"><span class="header-section-number">1.1.8</span> Best Practices</h3>
+<p>Write clear, descriptive commit messages (e.g., “Add user authentication logic”)</p>
+<p>Add constantly, Commit frequently, and push rarely</p>
+<p>Use .gitignore to prevent clutter</p>
+<p>Never force push unless absolutely necessary</p>
+<p>Use branches for new features or fixes</p>
+<p>Document your repository with a README and meaningful comments</p>
+</section>
+</section>
+</section>
+<section id="assignment-2" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Assignment 2</h1>
+<section id="initialize-new-rstudio-project" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="initialize-new-rstudio-project"><span class="header-section-number">2.1</span> Initialize New RStudio Project</h2>
+<p>Start by creating a new RStudio project, then add a simple Quarto file (e.g., example.qmd). Knit the file to HTML to ensure everything works correctly. You should see the output rendered in the Viewer pane or in your browser. Something like:</p>
 <p><img src="images/Fig1.png" class="img-fluid" alt="Image"> <!-- --></p>
+</section>
+<section id="initialize-git" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="initialize-git"><span class="header-section-number">2.2</span> Initialize Git</h2>
+<p>To start tracking your project with Git in a local (unconnected) environment, use git init in the terminal to initialize a new Git repository.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Fig4.png" class="img-fluid figure-img"></p>
+<figcaption>Image</figcaption>
+</figure>
+</div>
+<p>This command initializes a new Git repository locally. It’s the first step in tracking changes, making commits, and later syncing your project with GitHub.</p>
+</section>
+<section id="stage-and-push-to-github" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="stage-and-push-to-github"><span class="header-section-number">2.3</span> Stage and Push to GitHub</h2>
+<p>As shown in the image, we use git add, git commit, and git push to stage and upload our local changes to the remote repository.</p>
+<p>git add . — Stages all new and modified files. You can also stage specific files (e.g., git add example.qmd).</p>
+<p>git commit -m “message” — Records the staged changes with a short, descriptive message.</p>
+<p><img src="images/Fig3.png" class="img-fluid" alt="Image"> To connect to GitHub, the user adds a remote:</p>
+<p>git remote add origin <github-repo-url> git branch -M main</github-repo-url></p>
+<p>This will connect us to the remote repository and rename the master branch to main, this last part is not necesary but is easier to keep track this way.</p>
+<p>And then we push all committed changes. This will update our remote repository in Git:</p>
+<p>git push -u origin main -u establishes an upstream link, so future git push commands don’t need to specify the branch.</p>
+</section>
+<section id="git-branching-workflow-demonstration" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="git-branching-workflow-demonstration"><span class="header-section-number">2.4</span> Git Branching Workflow Demonstration</h2>
+<p>Step 1: To safely develop new features without affecting the main codebase, the user creates a new branch:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Fig6.png" class="img-fluid figure-img"></p>
+<figcaption>Image</figcaption>
+</figure>
+</div>
+<p>git checkout -b testbranch</p>
+<p>The terminal responded:</p>
+<p>Switched to a new branch ‘testbranch’</p>
+<p>This command both creates and switches to the new branch in one go, making it simpler than using git branch testbranch followed by git switch testbranch.</p>
+<p>Step 2: Making and Staging Changes</p>
+<p>After editing example.qmd, the user stages and commits:</p>
+<p>git add example.qmd</p>
+<p>This prepared the changes to be recorded in the version history.</p>
+<p>Then, I committed the changes with:</p>
+<p>git commit -m “Update example.qmd in testbranch”</p>
+<p>Next, I pushed the branch to GitHub:</p>
+<p>git push -u origin testbranch</p>
+<p>This command does two things: it syncs the branch with GitHub and sets up tracking between my local and remote branches.</p>
+<p>The output showed the progress and ended with:</p>
+<ul>
+<li>[new branch] testbranch -&gt; testbranch branch ‘testbranch’ set up to track ‘origin/testbranch’</li>
+</ul>
+<p>This meant:</p>
+<p>The testbranch was created on the remote repository.</p>
+<p>My committed changes were uploaded.</p>
+<p>Tracking was set up between the local and remote branches.</p>
+<p>Step 3: Checking Status and Adding More Changes</p>
+<p>To check work or stage additional changes:</p>
+<p>git status</p>
+<p>Alternatively, you can check the Git tab in the upper right corner of RStudio, which shows the same information visually.</p>
+<p>The output showed two things:</p>
+<p>A modified RStudio project file</p>
+<p>A new untracked image file (Fig6.png)</p>
+<p>To stage everything, I used::</p>
+<p>git add . git commit -m “Commit before pushing branch”</p>
+<p>And pushed the updates to the remote branch:</p>
+<p>git push -u origin testbranch</p>
+<p>The output confirmed that all my latest changes were successfully synchronized with GitHub.</p>
+<p>Step 4: Switching Back to Main Branch</p>
+<p>Once I was done working on testbranch, I switched back to the main branch with:</p>
+<p>git switch main</p>
+<p>The message: Your branch is ahead of ‘origin/main’ by 1 commit.</p>
+<p>This means I have local changes on the main branch that haven’t been pushed to the remote repository yet.</p>
+</section>
+<section id="add-a-data-folder-and-amend-the-previous-commit" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="add-a-data-folder-and-amend-the-previous-commit"><span class="header-section-number">2.5</span> Add a data Folder and Amend the Previous Commit</h2>
+<p>The user adds a data folder with relevant files: mkdir data #Copy your Assignment 1 data files into the data folder ls data # Verify files are present Stage the new files</p>
+<p>git add data</p>
+<p>Amend the previous commit To include these files in the previous commit (instead of creating a new one):</p>
+<p>git commit –amend –no-edit This keeps the commit history clean by updating the last commit without changing its message.</p>
+<p>Because this rewrites history, a force-push is needed:</p>
+<p>You must force push to update remote</p>
+<p>git push –force Required because we rewrote commit history</p>
+<p>Only safe for personal branches (like testbranch)</p>
+<p>Important Notes:</p>
+<p>This replaces the previous commit entirely</p>
+<p>Never force push to shared branches (main, dev, etc.)</p>
+<p>If collaborating, inform teammates after force-pushing</p>
+<p>The amended commit will now include both your original changes and the new data folder.</p>
+</section>
+<section id="create-a-merge-conflict-and-push-fix" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="create-a-merge-conflict-and-push-fix"><span class="header-section-number">2.6</span> Create a Merge Conflict and Push Fix</h2>
+<p>Switch to Main Branch git switch main Switches from testbranch back to the main development branch. The terminal indicates this in blue (NAME OF CURRENT BRANCH). The user modifies the same section of example.qmd that was changed on testbranch. These conflicting edits are committed and pushed:</p>
+<p>About this Project This text is DIFFERENT on main!</p>
+<p>Commit and Push Main Changes</p>
+<p>git add . git commit -m “Conflicting edit on main branch” git push</p>
+<p>Records and shares the conflicting changes with the remote repository.</p>
+<p>Attempt Merge bash git merge testbranch</p>
+<p>The git merge command combines changes from one branch into another. Checks for new commits in the source branch (testbranch) that are not in the target branch (main).</p>
+<p>Determines if changes can be merged automatically (fast-forward) or if manual conflict resolution is needed. Automatic Merge (If Possible)</p>
+<p>If changes affect different files/lines, Git merges them without conflicts.</p>
+<p>If the branches diverged (modified the same part of a file), Git pauses and reports a merge conflict.</p>
+<p>Conflict Detection (If Changes Overlap)</p>
+<p>When the same part of a file is modified differently in both branches, Git marks the conflict:</p>
+<p>Auto-merging example.qmd CONFLICT (content): Merge conflict in example.qmd Automatic merge failed; fix conflicts and then commit the result.</p>
+<p><img src="images/Fig7.png" class="img-fluid" alt="Image"> Resolve Conflict Manually The user manually edits the file to resolve the conflict, eliminating all &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD and =======/&gt;&gt;&gt;&gt;&gt;&gt;&gt; testbranch sections then finishes the merge:</p>
+<p>git add example.qmd git commit -m “Resolve merge conflict between main and testbranch” git push</p>
+</section>
+<section id="tag-the-merged-commit" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="tag-the-merged-commit"><span class="header-section-number">2.7</span> Tag the Merged Commit</h2>
+<p>To create a version tag:</p>
+<p>git tag -a v1.0 -m “First stable version after merge” git push origin v1.0</p>
+<p>Tags mark release points. Annotated tags (-a) store metadata (author, date, message) and are preferred over lightweight tags. <img src="images/Fig8.png" class="img-fluid" alt="Image"></p>
+</section>
+<section id="delete-branch-testbranch-locally-and-on-the-remote." class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="delete-branch-testbranch-locally-and-on-the-remote."><span class="header-section-number">2.8</span> Delete branch <code>testbranch</code> locally and on the remote.</h2>
+<p>To clean up after merging:</p>
+<p>git branch -d testbranch # Local deletion git push origin –delete testbranch # Remote deletion</p>
+<p>We use -d to safely delete the branch only if merged. Use -D to force-delete if necessary (e.g., unmerged changes). <img src="images/Fig10.png" class="img-fluid" alt="Image"> <img src="images/Fig9.png" class="img-fluid" alt="Image"></p>
+</section>
+<section id="display-the-commit-log-in-a-condensed-format-in-the-terminal." class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="display-the-commit-log-in-a-condensed-format-in-the-terminal."><span class="header-section-number">2.9</span> Display the commit log in a condensed format in the terminal.</h2>
+<p>To inspect commit history:</p>
+<p>git log –oneline –graph –decorate –all</p>
+<p>This provides a visual and concise overview of commits and branches.</p>
+<p><img src="images/Fig11.png" class="img-fluid" alt="Image"> <img src="images/Fig12.png" class="img-fluid" alt="Image"> <img src="images/Fig13.png" class="img-fluid" alt="Image"> <img src="images/Fig14.png" class="img-fluid" alt="Image"></p>
+</section>
+<section id="undo-a-commit-without-losing-changes" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="undo-a-commit-without-losing-changes"><span class="header-section-number">2.10</span> Undo a Commit (Without Losing Changes)</h2>
+<p>Simple Semicircle Plot</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="example_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>After adding a new section to example.qmd and committing it:</p>
+<p>git add . git commit -m “Add new section 9”</p>
+<p>The user realizes they want to undo the commit but keep the changes. They run:</p>
+<p>git reset –soft HEAD~1</p>
+<p>–soft undoes the commit but preserves staged changes, allowing edits or re-commits.</p>
+<p>Alternatives:</p>
+<p>–mixed: Unstages changes but keeps them.</p>
+<p>–hard: Deletes changes — irreversible without backups.</p>
+<section id="story-time-only-included-since-i-know-how-much-you-like-to-see-how-we-overrcomplicate-ourselves" class="level3" data-number="2.10.1">
+<h3 data-number="2.10.1" class="anchored" data-anchor-id="story-time-only-included-since-i-know-how-much-you-like-to-see-how-we-overrcomplicate-ourselves"><span class="header-section-number">2.10.1</span> Story Time (Only included since I know how much you like to see how we overrcomplicate ourselves)</h3>
+<p>Because I was trying to push onto the class repository instead of a repository I had access to I had a bit of a problem as shown:</p>
+<p><img src="images/Fig5.png" class="img-fluid" alt="Image"> Since I don’t have ownership of the repository, no matter how much I tried to cheat Git, neither of us will succeed. But you’ll still get a good laugh watching me run around like a headless chicken (see git_history.txt). To fix all the ‘fixing’—which included, but wasn’t limited to, modifying my SSH—I created a new repository on GitHub, got the new SSH key, and did the following:</p>
+<p>When I first tried to push my local repository to GitHub with the command:</p>
+<p>git push –set-upstream origin main</p>
+<p>I ran into the following error:</p>
+<p>no such identity: /c/Users/jesus/.ssh/id_ed25519: No such file or directory git@ssh.github.com: Permission denied (publickey). fatal: Could not read from remote repository.</p>
+<p>This error meant that Git couldn’t find my SSH key at the expected location, so it couldn’t authenticate with GitHub.</p>
+<p>To fix this, I removed the existing remote configuration:</p>
+<p>git remote remove origin</p>
+<p>I did this because the remote configuration might have been incorrect or pointed to the wrong repository.</p>
+</section>
+<section id="configured-ssh-settings" class="level3" data-number="2.10.2">
+<h3 data-number="2.10.2" class="anchored" data-anchor-id="configured-ssh-settings"><span class="header-section-number">2.10.2</span> Configured SSH settings:</h3>
+<p>If Git can’t authenticate with GitHub due to SSH issues (like “Permission denied (publickey)”), follow these steps:</p>
 <ol type="1">
-<li><p>From the command line interface, initialise this folder as a git repository and push it to the GitHub classroom repository.</p></li>
-<li><p>Create a new branch called <code>testbranch</code>. Modify the file <code>example.qmd</code> and add the changes to both the local and remote repositories.</p></li>
-<li><p>Create a folder called data, and add the data from Assignment 1 to that folder. Amend the previous commit to include the data folder. Push this amended commit to the remote.</p></li>
-<li><p>Switch back to the main branch and modify <code>example.qmd</code> in a different way such that it will conflict with <code>testbranch</code>. Commit and push these changes.</p></li>
-<li><p>Merge the changes in <code>testbranch</code> onto <code>main</code>. Show the conflict and fixing the merge conflict. Push the changes to GitHub, showing the status and changes in GitHub.</p></li>
-<li><p>Tag this commit v1.0 on <code>main</code> using an annotated tag.</p></li>
-<li><p>Delete branch <code>testbranch</code> locally and on the remote.</p></li>
-<li><p>Show the commit log in condensed form in the terminal.</p></li>
-<li><p>On main, create a new section in <code>example.qmd</code> that includes an easy to make plot. Commit the changes, and demonstrate using the command line interface how to undo the commit <em>without</em> losing your local changes.</p></li>
+<li>Check SSH key setup: Open the SSH config file with:</li>
 </ol>
-<!-- -->
-
+<p>nano ~/.ssh/config</p>
+<ol start="2" type="1">
+<li>Update SSH config: Change the public key to id_rsa like this:</li>
+</ol>
+<p>Host github.com</p>
+<p>HostName github.com User git IdentityFile ~/.ssh/id_rsa</p>
+<p>3.Test connection:</p>
+<p>ssh -T git@github.com You should see: Hi SlothGodCh! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+<ol start="4" type="1">
+<li>Fix the remote: Since the previous remote was incorrect, I ran into this issue when pushing:</li>
+</ol>
+<p>git push –set-upstream origin main fatal: ‘origin’ does not appear to be a git repository</p>
+<p>This happened because I had removed the remote origin earlier, so Git didn’t know where to push my code.</p>
+<p>To fix this, I added the correct remote repository:</p>
+<p>git remote add origin git@github.com:SlothGodCh/assigment2.git</p>
+<p>This command re-established the connection to my GitHub repository using the SSH protocol.</p>
+<ol start="5" type="1">
+<li>Push the code: After adding the correct remote, I pushed my code with:</li>
+</ol>
+<p>git push -u origin main</p>
+<p>The output showed all my files being uploaded and confirmed that the ‘main’ branch was set up correctly:</p>
+<ul>
+<li>[new branch] main -&gt; main branch ‘main’ set up to track ‘origin/main’.</li>
+</ul>
+<ol start="6" type="1">
+<li>Verify the successful push: To check everything was synced, I ran:</li>
+</ol>
+<p>git status</p>
+<p>It showed:</p>
+<p>On branch main Your branch is up to date with ‘origin/main’. nothing to commit, working tree clean</p>
+<p>And:</p>
+<p>git branch</p>
+<p>Which displayed:</p>
+<ul>
+<li>main testbranch This confirmed that my local ‘main’ branch was properly connected to the remote repository.</li>
+</ul>
+<ol start="7" type="1">
+<li>The Easy Way: Instead of going through all the issues, you could do it the easy way by running:</li>
+</ol>
+<p>git init git add . git commit -m “Initial commit: added example.qmd and knitted HTML file” git remote add origin <github-repo-url> git branch -M main git push -u origin main</github-repo-url></p>
+<p>This setup would connect your local repository to GitHub without the hassle.</p>
+</section>
+<section id="create-and-push-a-new-branch" class="level3" data-number="2.10.3">
+<h3 data-number="2.10.3" class="anchored" data-anchor-id="create-and-push-a-new-branch"><span class="header-section-number">2.10.3</span> Create and Push a New Branch</h3>
+<p>To do this step I eliminated the previously created (if you followed the part 1 you can skip this section) testbranch and restarted the process</p>
+</section>
+<section id="deleting-a-local-git-branch" class="level3" data-number="2.10.4">
+<h3 data-number="2.10.4" class="anchored" data-anchor-id="deleting-a-local-git-branch"><span class="header-section-number">2.10.4</span> Deleting a Local Git Branch</h3>
+<p>To permanently delete the local testbranch, I used the force deletion command:</p>
+<p>git branch -D testbranch</p>
+<p>This successfully removed the branch with the confirmation:</p>
+<p>Deleted branch testbranch (was 56e63ab).</p>
+<p>The -D flag forces deletion (equivalent to –delete –force)</p>
+<p>This only affects the local repository - the remote branch remains unchanged</p>
+<p>The hash 56e63ab shows the last commit on the deleted branch</p>
+<p>Note: Always ensure you’ve merged or saved needed changes before deletion, especially since this action cannot be undone - all commits exclusive to this branch will be permanently lost unless they exist in another branch or were pushed to a remote.</p>
+</section>
+</section>
 </section>
 
 </main>
@@ -225,57 +646,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
     clipboardModal.on('success', onCopySuccess);
-  }
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
@@ -606,50 +976,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Beginner's Guide to Git and GitHub"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Jesus Biurrun"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 2</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-copy: true</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: cosmo</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">    css: styles.css</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight-style: pygments</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Create a new RStudio Project. In this folder, create a simple qmd file called <span class="in">`example.qmd`</span> that can be knitted into a HTML file. Show the result of the knitted file.</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Image Example</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>Here is an example image:</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="al">![Image](images/Fig1.png)</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- --&gt;</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>From the command line interface, initialise this folder as a git repository and push it to the GitHub classroom repository.</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Create a new branch called <span class="in">`testbranch`</span>. Modify the file <span class="in">`example.qmd`</span> and add the changes to both the local and remote repositories.</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Create a folder called data, and add the data from Assignment 1 to that folder. Amend the previous commit to include the data folder. Push this amended commit to the remote.</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Switch back to the main branch and modify <span class="in">`example.qmd`</span> in a different way such that it will conflict with <span class="in">`testbranch`</span>. Commit and push these changes.</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>Merge the changes in <span class="in">`testbranch`</span> onto <span class="in">`main`</span>. Show the conflict and fixing the merge conflict. Push the changes to GitHub, showing the status and changes in GitHub.</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>Tag this commit v1.0 on <span class="in">`main`</span> using an annotated tag.</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss">7.  </span>Delete branch <span class="in">`testbranch`</span> locally and on the remote.</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">8.  </span>Show the commit log in condensed form in the terminal.</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">9.  </span>On main, create a new section in <span class="in">`example.qmd`</span> that includes an easy to make plot. Commit the changes, and demonstrate using the command line interface how to undo the commit *without* losing your local changes.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
-</div></div></div></div></div>
+</script>
 </div> <!-- /content -->
 
 
