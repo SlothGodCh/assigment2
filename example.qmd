@@ -14,22 +14,47 @@ format:
     highlight-style: pygments
 ---
 
-1.  Create a new RStudio Project. In this folder, create a simple qmd file called `example.qmd` that can be knitted into a HTML file. Show the result of the knitted file.
+This guide walks a new user through using Git and GitHub in the context of an RStudio project. Each step explains what is being done, why it's necessary, and why certain commands are preferred.
 
-## Image Example
+##1. Initialize New RStudio Project and Push to GitHub
+A user starts by creating a new RStudio project and adding a simple Quarto (example.qmd) file that can be knitted to HTML. The resulting knitted file should be saved and previewed to confirm that the file is working.
 
-Here is an example image:
+### Image Example
+
+Here is the document knitted as an html:
 
 ![Image](images/Fig1.png)
 <!-- -->
 
-1.  From the command line interface, initialise this folder as a git repository and push it to the GitHub classroom repository.
+###2.Initialize Git
+To start using Git in this folder, the user opens a terminal or command line interface and runs:
 
-In order to initialize git when working in unconncected we have to use git init to initialize git
+In order to initialize git when working in an unconnected we have to use git init to initialize git
 
 ![Image](images/Fig4.png)
 
-As shown in the picture we uae git add commit and push to stage and push all files that we have on the file we have now because I was trying to push onto the class repository instead of a repository I had access to I had a bit of a problem as shown: 
+This command initializes a new Git repository locally. It's essential to track changes, create commits, and eventually sync the project with GitHub.
+
+##3.Stage, Commit, and Push to GitHub
+
+As shown in the picture we use git add commit and push to stage and push all files that we have on the local repository.
+
+git add .: Adds all new/modified files. We use . to include everything or we select files manually (git add example.qmd).
+
+git commit -m: Stages the changes with a short message.
+![Image](images/Fig3.png)
+To connect to GitHub, the user adds a remote:
+
+git remote add origin <github-repo-url>
+git branch -M main
+And then we push all commited changes. This will update our remote repository in Git:
+
+git push -u origin main
+-u establishes an upstream link, so future git push commands don’t need to specify the branch.
+
+##Story Time (Skip to next step to continue with the guide)
+
+Because I was trying to push onto the class repository instead of a repository I had access to I had a bit of a problem as shown: 
 
 ![Image](images/Fig5.png)
 Now since I have no ownership of the repository no matter how much I tried to cheat Git neither I nor you will succed but you will still get a laugh out of me running around like a headless chicken(git_history.txt). To fix all of the "Fixing" which included but was not limited to modifying my SSH I created a new Repository in GitHub got the new SSH key and did:
@@ -50,25 +75,30 @@ To resolve this, I had to remove the existing remote configuration:
 git remote remove origin
 I did this because the current remote configuration might have been incorrect or pointing to the wrong repository.
 
-Configured SSH settings:
+###Configured SSH settings:
+
+SSH Issues
+If Git cannot authenticate with GitHub due to SSH issues (e.g., Permission denied (publickey)), We had to:
+
+1. Check SSH key setup:
 
 nano ~/.ssh/config
-I edited my SSH configuration file to remove the modified SSH id from a public one (id_ed25519) to my own specific SSH id_rsa in the config file we had:
+
+2. Update the SSH config file change public key to id_rsa:
 
 Host github.com
   HostName github.com
   User git
-  IdentityFile ~/.ssh/id_rsa (modification already done)
-
-Tested the SSH connection to GitHub:
+  IdentityFile ~/.ssh/id_rsa
+  
+4.Test connection:
 
 ssh -T git@github.com
-The successful response:
-
 Hi SlothGodCh! You've successfully authenticated, but GitHub does not provide shell access.
-confirmed that my SSH configuration was now working correctly.
 
-Attempted to push again, but encountered a new issue:
+5. Since the previous remote was incorrect:
+
+When attempted to push again, encountered a new issue:
 
 git push --set-upstream origin main
 fatal: 'origin' does not appear to be a git repository
@@ -79,7 +109,7 @@ Added the correct remote repository:
 git remote add origin git@github.com:SlothGodCh/assigment2.git
 This command re-established the connection to my GitHub repository using the SSH protocol.
 
-Successfully pushed my code:
+6. Successfully pushed my code:
 
 git push -u origin main
 The output showed all my files being compressed and uploaded, concluding with:
@@ -88,7 +118,7 @@ The output showed all my files being compressed and uploaded, concluding with:
 branch 'main' set up to track 'origin/main'.
 This confirmed that my local 'main' branch was now successfully connected to the remote repository.
 
-Verified the successful push:
+7. Verified the successful push:
 
 git status
 showed:
@@ -105,8 +135,7 @@ displayed:
   testbranch
 confirming that my main branch was synchronized with GitHub and I had one additional local branch (testbranch).
 
-Through this process, I resolved the authentication issue caused by myself if this was not the case the steps to follow would b:
-
+So instead of doing the easyway:
 git init
 git add .
 git commit -m "Initial commit: added example.qmd and knitted HTML file"
@@ -115,24 +144,182 @@ git remote add origin <github-repo-url>
 git branch -M main
 git push -u origin main
 
-This sets up Git version control locally and connects it to your GitHub repo for collaboration and backup.
+This would set up Git version control locally and connect it to a GitHub repo for collaboration and backup without panicking and having all the troubles I had.
 
 
 
-2.  Create a new branch called `testbranch`. Modify the file `example.qmd` and add the changes to both the local and remote repositories.
+##2. Create and Push a New Branch
 
-To do this step I eliminated the previously created testbranch and restarted the process
+To do this step I eliminated the previously created (if you followed the part 1 you cans skip this section) testbranch and restarted the process
 
-jesus@SlothGodHP MINGW64 ~/Documents/ETC 5513/Assigment2/Assigment2 (main)
-$ git branch -D testbranch
+###Deleting a Local Git Branch
+To permanently delete the local testbranch, I used the force deletion command:
+
+git branch -D testbranch
+This successfully removed the branch with the confirmation:
+
 Deleted branch testbranch (was 56e63ab).
+Key Notes:
+
+The -D flag forces deletion (equivalent to --delete --force)
+
+This only affects the local repository - the remote branch remains unchanged
+
+The hash 56e63ab shows the last commit on the deleted branch
+
+Always ensure you've merged or saved needed changes before deletion, especially since this action cannot be undone - all commits exclusive to this branch will be permanently lost unless they exist in another branch or were pushed to a remote.
+
+###Git Branching Workflow Demonstration
+
+Step 1: To safely develop new features without affecting the main codebase, the user creates a new branch:
+![Image](images/Fig6.png)
+git checkout -b testbranch
+The terminal responded:
+
+Switched to a new branch 'testbranch'
+This creates and switches to testbranch in one command. It's preferred over git branch testbranch followed by git switch testbranch for simplicity.
+
+Step 2: Making and Staging Changes
+After editing example.qmd, the user stages and commits:
+
+git add example.qmd
+This prepared my changes to be permanently recorded in the version history.
+
+git commit -m "Update example.qmd in testbranch"
+
+Then pushes the branch:
+
+git push -u origin testbranch
+
+This syncs the branch with GitHub and sets up tracking.
+
+The detailed output showed the upload progress and concluded with:
+
+* [new branch]      testbranch -> testbranch
+branch 'testbranch' set up to track 'origin/testbranch'
+This accomplished three things:
+
+Created testbranch on the remote repository
+
+Uploaded my committed changes
+
+Established tracking between local and remote branches
+
+Step 3: Checking Status and Adding More Changes
+
+To check work or stage additional changes:
+
+git status
+
+You could check directly on the git window upperright corener instead of using the command.
+It showed:
+
+A modified RStudio project file
+
+A new untracked image file (Fig6.png)
+
+I staged all changes using:
+
+git add .
+git commit -m "Commit before pushing branch"
+And pushed again to update the remote branch:
+
+git push -u origin testbranch
+The output confirmed successful synchronization of my latest changes.
+
+Step 7: Switching Back to Main Branch
+Finally, I returned to the main branch:
+
+git switch main
+The message:
+
+Your branch is ahead of 'origin/main' by 1 commit.
+Indicates I have local commits not yet pushed to the remote main branch.
+
+##4.Add a data Folder and Amend the Previous Commit
+
+The user adds a data folder with relevant files:
+mkdir data #Copy your Assignment 1 data files into the data folder
+ls data  # Verify files are present
+Stage the new files
+
+git add data
+
+Amend the previous commit
+To include these files in the previous commit (instead of creating a new one):
+
+git commit --amend --no-edit
+This keeps the commit history clean by updating the last commit without changing its message.
+
+Because this rewrites history, a force-push is needed:
 
 
-3.  Create a folder called data, and add the data from Assignment 1 to that folder. Amend the previous commit to include the data folder. Push this amended commit to the remote.
+Force push to update remote
 
-4.  Switch back to the main branch and modify `example.qmd` in a different way such that it will conflict with `testbranch`. Commit and push these changes.
+git push --force
+Required because we rewrote commit history
 
-5.  Merge the changes in `testbranch` onto `main`. Show the conflict and fixing the merge conflict. Push the changes to GitHub, showing the status and changes in GitHub.
+Only safe for personal branches (like testbranch)
+
+Important Notes:
+
+This replaces the previous commit entirely
+
+Never force-push to shared branches (main, dev, etc.)
+
+If collaborating, inform teammates after force-pushing
+
+The amended commit will now include both your original changes and the new data folder.
+
+##5. Create a Merge Conflict
+
+
+Switch to Main Branch
+git switch main
+Switches from testbranch back to the main development branch. The terminal indicates this in blue (NAME OF CURRENT BRANCH).
+The user modifies the same section of example.qmd that was changed on testbranch. These conflicting edits are committed and pushed:
+
+About this Project
+This text is DIFFERENT on main!
+
+Commit and Push Main Changes
+
+git add .
+git commit -m "Conflicting edit on main branch"
+git push
+
+Records and shares the conflicting changes with the remote repository.
+
+Attempt Merge
+bash
+git merge testbranch
+
+The git merge command combines changes from one branch into another. Checks for new commits in the source branch (testbranch) that are not in the target branch (main).
+
+Determines if changes can be merged automatically (fast-forward) or if manual conflict resolution is needed.
+Automatic Merge (If Possible)
+
+If changes affect different files/lines, Git merges them without conflicts.
+
+If the branches diverged (modified the same part of a file), Git pauses and reports a merge conflict.
+
+Conflict Detection (If Changes Overlap)
+
+When the same part of a file is modified differently in both branches, Git marks the conflict:
+
+Auto-merging example.qmd
+CONFLICT (content): Merge conflict in example.qmd
+Automatic merge failed; fix conflicts and then commit the result.
+
+![Image](images/Fig7.png)
+Resolve Conflict Manually
+The user manually edits the file to resolve the conflict, eliminating all <>HEADand testbranch section, then finishes the merge:
+
+git add example.qmd
+git commit -m "Resolve merge conflict between main and testbranch"
+git push
+
+##5.  Merge the changes in `testbranch` onto `main`. Show the conflict and fixing the merge conflict. Push the changes to GitHub, showing the status and changes in GitHub.
 
 6.  Tag this commit v1.0 on `main` using an annotated tag.
 
@@ -141,5 +328,4 @@ Deleted branch testbranch (was 56e63ab).
 8.  Show the commit log in condensed form in the terminal.
 
 9.  On main, create a new section in `example.qmd` that includes an easy to make plot. Commit the changes, and demonstrate using the command line interface how to undo the commit *without* losing your local changes.
-
-this will be different
+>>>>>>> testbranch
